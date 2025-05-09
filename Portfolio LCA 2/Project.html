@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UX Portfolio</title>
+  <link rel="stylesheet" href="stylesheet.css">
+</head>
+<body>
+  <section class="bgbody">
+        
+  <header>
+    <nav class="navbar">
+      <div class="logo">
+        <img src="Images/logo.png" alt="Logo" />
+      </div>
+      
+      <ul class="nav-links">
+        <li><a href="Home.html" >Home</a></li>
+        <li><a href="About.html">About</a></li>
+        <li><a href="Project.html" class="active">Project</a></li>
+        <li><a href="Contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+  <section class="portfolio-section">
+    <div class="portfolio-content">
+      <h1><span class="bold">My</span> <span class="highlight">Portfolio</span></h1>
+      <p>
+        Welcome to my portfolio, where you can explore a curated selection of my work. Each project showcases my design approach, from research and strategy to execution, focusing on creating meaningful user experiences. Browse through my case studies, web designs, UI/UX projects, and branding work to see how I turn ideas into impactful digital solutions.
+      </p>
+    </div>
+</section>
+
+<section class="portfolio-grid">
+    <div class="portfolio-card">
+      <div class="year-tag">2023</div>
+      <img src="Images/work 1.jpg" alt="Portfolio Item">
+      <div class="tags">
+        <span>Web Design</span>
+        <span>Case Study</span>
+      </div>
+    </div>
+
+    <div class="portfolio-card">
+      <div class="year-tag">2023</div>
+      <img src="Images/work 2.jpg" alt="Portfolio Item">
+      <div class="tags">
+        <span>Web Design</span>
+        <span>Case Study</span>
+      </div>
+    </div>
+
+    <div class="portfolio-card">
+      <div class="year-tag">2023</div>
+      <img src="Images/work 3.jpg" alt="Portfolio Item">
+      <div class="tags">
+        <span>Brochure</span>
+        <span>Graphic Design</span>
+      </div>
+    </div>
+
+    <div class="portfolio-card">
+      <div class="year-tag">2023</div>
+      <img src="Images/work 4.jpg" alt="Portfolio Item">
+      <div class="tags">
+        <span>Brochure</span>
+        <span>Graphic Design</span>
+      </div>
+    </div>
+
+    <div class="portfolio-card">
+      <div class="year-tag">2024</div>
+      <img src="Images/work 5.jpg" alt="Portfolio Item">
+      <div class="tags">
+        <span>App Design</span>
+        <span>Case Study</span>
+      </div>
+    </div>
+
+    <div class="portfolio-card">
+      <div class="year-tag">2024</div>
+      <img src="Images/work 6.jpg" alt="Portfolio Item">
+      <div class="tags">
+        <span>Web Design</span>
+        <span>Case Study</span>
+      </div>
+    </div>
+</section>
+
+  <section class="project-cta">
+    <div class="cta-container">
+      <h2>
+        Have an <span class="highlight">Awsome Project</span> <span class="arrow-icon">↘</span><br />
+        Idea? <span class="cta-pink">Let’s Discuss</span>
+      </h2>
+      <p>
+        I’m always open to collaborating on exciting new projects. Whether it’s a creative<br />
+        concept or simply new perspective, I’m eager to hear your ideas and explore potential partnerships.
+      </p>
+      <a href="#contact" class="connect-btn">Connect <span class="arrow">↗</span></a>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-logo">
+        <img src="Images/logo.png" alt="Logo" />
+      </div>
+      <nav class="footer-nav">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#projects">Project</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      
+    </div>
+    <div class="footer-bottom"></div>
+  </footer>
+</section>
+<script>
+  // PROJECT PAGE
+document.addEventListener("DOMContentLoaded", function () {
+  const portfolioCards = document.querySelectorAll('.portfolio-card');
+
+ 
+window.addEventListener('DOMContentLoaded', function () {
+  
+  var portfolioGrid = document.querySelector('.portfolio-grid');
+  if (portfolioGrid && portfolioGrid.firstElementChild) {
+    console.log("First child of portfolio-grid:", portfolioGrid.firstElementChild);
+  }
+
+  
+  const connectButton = document.querySelector('.connect-btn');
+  if (connectButton) {
+    connectButton.addEventListener('click', function (e) {
+      e.preventDefault();
+
+      alert("Thanks for your interest! Let's connect.");
+
+      
+      if (!document.getElementById('thankYouMessage')) {
+        var message = document.createElement('p');
+        message.textContent = "We’ll be in touch shortly!";
+        message.setAttribute('id', 'thankYouMessage');
+        message.classList.add('thank-you-msg');
+
+        
+        const ctaContainer = document.querySelector('.cta-container');
+        if (ctaContainer) {
+          ctaContainer.appendChild(message);
+        } else {
+          document.body.appendChild(message);
+        }
+      }
+    });
+  }
+});
+  // Mouse enter and mouse leave effects
+  portfolioCards.forEach(function (card) {
+    card.addEventListener('mouseover', function () {
+      card.style.transform = 'scale(1.1)';
+      card.style.boxShadow = '0 8px 24px rgba(0, 0, 0, 0.4)';
+    });
+
+    card.addEventListener('mouseout', function () {
+      card.style.transform = 'scale(1)';
+      card.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.2)';
+    });
+  });
+});
+</script>
+</body>
+</html>

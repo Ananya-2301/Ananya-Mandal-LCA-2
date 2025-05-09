@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UX Portfolio</title>
+  <link rel="stylesheet" href="stylesheet.css">
+</head>
+<body>
+  <section class="bgbody">
+    <header>
+      <nav class="navbar">
+        <div class="logo">
+          <img src="Images/logo.png" alt="Logo" />
+        </div>
+        <ul class="nav-links">
+          <li><a href="Home.html">Home</a></li>
+          <li><a href="About.html">About</a></li>
+          <li><a href="Project.html">Project</a></li>
+          <li><a href="Contact.html" class="active">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <section class="contact-section">
+      <div class="contact-content">
+        <h1><span class="bold">Let's</span> <span class="highlight">Connect</span></h1>
+        <p>
+          Have a project or want to collaborate? I'd love to hear from you! Feel free to reach out for inquiries, opportunities, or just to say hello.
+        </p>
+      </div>
+    </section>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <section class="contact-wrapper">
+      <div class="form-container">
+        <form id="contact-form">
+          <div class="row">
+            <div class="input-field">
+              <label for="first-name">First Name</label>
+              <input type="text" id="first-name" name="first-name" />
+            </div>
+            <div class="input-field">
+              <label for="last-name">Last Name</label>
+              <input type="text" id="last-name" name="last-name" />
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-field">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" />
+            </div>
+            <div class="input-field">
+              <label for="phone">Phone Number</label>
+              <input type="text" id="phone" name="phone" />
+            </div>
+          </div>
+
+          <div class="input-field full-width">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Type your message..."></textarea>
+          </div>
+
+          <div class="checkbox-group">
+            <input type="checkbox" id="terms" />
+            <label for="terms">I accept the terms</label>
+          </div>
+
+          <button type="submit" class="submit-btn">
+            Hire Me <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </button>
+        </form>
+        <p id="form-message" style="margin-top: 15px; font-size: 14px;"></p>
+      </div>
+
+      <div class="info-container">
+        <div class="contact-info">
+          <h3>Contact Me</h3>
+          <p><i class="fa-solid fa-phone"></i> +91 9921038897</p>
+          <p><i class="fa-solid fa-envelope"></i> ananyamandal2301@gmail.com</p>
+        </div>
+
+        <div class="follow-info">
+          <h4>Follow Me</h4>
+          <div class="social-links">
+            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="footer-container">
+        <div class="footer-logo">
+          <img src="Images/logo.png" alt="Logo" />
+        </div>
+        <nav class="footer-nav">
+          <a href="#home">Home</a>
+          <a href="#about">About</a>
+          <a href="#projects">Project</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+      <div class="footer-bottom"></div>
+    </footer>
+  </section>
+  <script>
+    // Contact Page form
+    function validateForm(event) {
+      event.preventDefault();
+      var isValid = true;
+  
+      const firstName = document.getElementById("first-name");
+      const lastName = document.getElementById("last-name");
+      const email = document.getElementById("email");
+      const phone = document.getElementById("phone");
+      const message = document.getElementById("message");
+      const terms = document.getElementById("terms");
+  
+      const formFields = [
+        { field: firstName, wrapper: firstName.closest(".input-field") },
+        { field: lastName, wrapper: lastName.closest(".input-field") },
+        { field: email, wrapper: email.closest(".input-field") },
+        { field: phone, wrapper: phone.closest(".input-field") },
+        { field: message, wrapper: message.closest(".input-field") },
+        { field: terms, wrapper: terms.closest(".checkbox-group") },
+      ];
+  
+      document.querySelectorAll(".error-message").forEach((el) => el.remove());
+      document.querySelectorAll(".input-error").forEach((el) =>
+        el.classList.remove("input-error")
+      );
+  
+      formFields.forEach(({ field, wrapper }) => {
+        let hasError = false;
+  
+        if (field.type === "checkbox") {
+          if (!field.checked) hasError = true;
+        } else {
+          if (field.value.trim() === "") hasError = true;
+        }
+  
+        if (hasError) {
+          isValid = false;
+          field.classList.add("input-error");
+  
+          const errorMsg = document.createElement("p");
+          errorMsg.className = "error-message";
+          errorMsg.textContent = "This field is required!";
+          wrapper.appendChild(errorMsg);
+        }
+      });
+  
+      const msgBox = document.getElementById("form-message");
+      if (isValid) {
+        msgBox.textContent = "Thank you! Your request has been received.";
+        msgBox.style.color = "green";
+        document.getElementById("contact-form").reset();
+      } else {
+        msgBox.textContent = "";
+      }
+    }
+  
+    document.querySelector("#contact-form").addEventListener("submit", validateForm);
+  
+    document.getElementById("email").addEventListener("keyup", function () {
+      const emailField = this;
+      if (emailField.value.includes("@")) {
+        emailField.style.borderColor = "green";
+      } else {
+        emailField.style.borderColor = "red";
+      }
+    });
+  </script>
+</body>
+</html>
